@@ -4,6 +4,13 @@ const colors = require('colors');
 
 const env = process.env.NODE_ENV;
 
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+const extractSass = new ExtractTextPlugin({
+    filename: "[name].[contenthash].css",
+    disable: env === "development"
+});
+
 const develop = {
   entry: './src/App.js',
   output: {
@@ -33,7 +40,17 @@ const develop = {
         use: {
           loader: 'css-loader'
         }
-      }
+      }, 
+			{
+				test: /\.scss$/,
+        use: [{
+            loader: "style-loader"
+        }, {
+            loader: "css-loader"
+        }, {
+            loader: "sass-loader"
+        }]
+			}
     ]
   },
   devServer: {
