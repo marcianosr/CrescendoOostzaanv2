@@ -4,12 +4,25 @@ const colors = require('colors');
 
 const env = process.env.NODE_ENV;
 
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const extractSass = new ExtractTextPlugin({
-    filename: "[name].[contenthash].css",
-    disable: env === "development"
+    filename: '[name].[contenthash].css',
+    disable: env === 'development'
 });
+
+const postCssLoader = {
+	loader: 'postcss-loader',
+	options: {
+    ident: 'postcss',
+    plugins: (loader) => [
+      require('autoprefixer')(),
+      env === 'production' && require('cssnano')()
+    ]
+  }
+}
+
+
 
 const develop = {
   entry: './src/App.js',
@@ -35,20 +48,32 @@ const develop = {
           loader: 'babel-loader'
         }
       },
-      {
-        test: /\.css$/,
-        use: {
-          loader: 'css-loader'
-        }
-      }, 
+      // {
+      //   test: /\.css$/,
+      //   use: {
+      //     loader: 'css-loader'
+      //   }
+      // },
 			{
 				test: /\.scss$/,
         use: [{
-            loader: "style-loader"
+            	loader: 'style-loader',
         }, {
-            loader: "css-loader"
+	            loader: 'css-loader',
+							options: {
+								modules: true,
+								localIdentName: '[path][name]__[local]--[hash:base64:5]'
+							}
         }, {
-            loader: "sass-loader"
+							loader: 'postcss-loader',
+							options: {
+								plugins:[
+									require('autoprefixer')
+									// require('cssnano')()
+								]
+							}
+					}, {
+            	loader: 'sass-loader'
         }]
 			}
     ]
@@ -66,6 +91,10 @@ const develop = {
     modules: ['node_modules']
   }
 };
+
+const production = {
+	// Setup production webpack.
+}
 
 switch (env) {
   case 'development':
