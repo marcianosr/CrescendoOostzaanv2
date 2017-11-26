@@ -14,18 +14,19 @@ const extractSass = new ExtractTextPlugin({
 const postCssLoader = {
 	loader: 'postcss-loader',
 	options: {
-    ident: 'postcss',
-    plugins: (loader) => [
-      require('autoprefixer')(),
-      env === 'production' && require('cssnano')()
+    plugins: [
+      require('autoprefixer'),
+      env === 'production' ? require('cssnano')() : null
     ]
   }
 }
 
 
-
 const develop = {
-  entry: './src/App.js',
+	entry: {
+		["1-app"]: "./src/app.js",
+		// ["0-vendor"]: ["preact", "preact-redux", "redux", "preact-router"]
+	},
   output: {
     path: `${__dirname}dist/`,
     filename: 'bundle.min.js'
@@ -48,32 +49,25 @@ const develop = {
           loader: 'babel-loader'
         }
       },
-      // {
-      //   test: /\.css$/,
-      //   use: {
-      //     loader: 'css-loader'
-      //   }
-      // },
 			{
 				test: /\.scss$/,
         use: [{
-            	loader: 'style-loader',
+          	loader: 'style-loader',
         }, {
-	            loader: 'css-loader',
-							options: {
-								modules: true,
-								localIdentName: '[path][name]__[local]--[hash:base64:5]'
-							}
+            loader: 'css-loader',
+						options: {
+							modules: true,
+							localIdentName: '[path][name]__[local]--[hash:base64:5]'
+						}
         }, {
-							loader: 'postcss-loader',
-							options: {
-								plugins:[
-									require('autoprefixer')
-									// require('cssnano')()
-								]
-							}
+						loader: 'postcss-loader',
+						options: {
+							plugins:[
+								require('autoprefixer')
+							]
+						}
 					}, {
-            	loader: 'sass-loader'
+          	loader: 'sass-loader'
         }]
 			}
     ]

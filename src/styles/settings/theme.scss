@@ -1,0 +1,10 @@
+// Theme colors.
+
+$brand-fountain-green: #56B8BA;
+$brand-fountain-green-light: #9ed6d8;
+
+$gradient-fountain-green: linear-gradient(
+	to right,
+	$brand-fountain-green,
+	$brand-fountain-green-light
+);
