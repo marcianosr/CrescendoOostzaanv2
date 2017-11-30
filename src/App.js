@@ -39,3 +39,12 @@ const initializeRoot = () => (
 
 
 initializeRoot();
+
+/* List of to do's:
+Work of this list before deploying:
+
+https://medium.com/dev-channel/the-cost-of-javascript-84009f51e99e
+
+[ ] - Check code coverage in devtools and try to figure out if you need to remove unused code by using Tree shaking: https://webpack.js.org/guides/tree-shaking/
+
+*/

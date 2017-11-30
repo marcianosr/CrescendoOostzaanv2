@@ -1,30 +1,43 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { getPosts } from '../actions/posts';
 
 class HomePageContainer extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
+	}
+
+	componentDidMount() {
+		this.props.getPosts();
 	}
 
 	render() {
 		const { loading, posts } = this.props;
-		console.log(posts, 'posts');
+		console.log(this.props, 'props');
 		return (
 			<section>
 				<h2>HomePageContainer</h2>
 				{ loading && <div> loading... </div>}
-				{ !loading && <div> {posts.posts} </div>}
+				{ !loading && <h1> {posts[0].title} </h1>}
 			</section>
 		)
 	}
 }
 
-// Map HomePageContainer state to props and connect it to Redux.
-function mapStateToProps(state) {
+/*	Map HomePageContainer state to props and connect it to Redux.
+	It receives the state from the Store and maps it (somewhere behind the scenes)
+	to the connected component */
+
+const mapStateToProps = state => {
   return {
-    loading: state.loading,
 		posts: state.posts
   };
 }
 
-export default connect(mapStateToProps)(HomePageContainer);
+const mapDispatchToProps = {
+	getPosts
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePageContainer);
