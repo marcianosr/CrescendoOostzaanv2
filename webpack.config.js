@@ -6,6 +6,11 @@ const env = process.env.NODE_ENV;
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+
+const buildVersion = function() {
+  return require("./package.json").version;
+};
+
 const extractSass = new ExtractTextPlugin({
     filename: '[name].[contenthash].css',
     disable: env === 'development'
@@ -87,16 +92,71 @@ const develop = {
 };
 
 const production = {
-	// Setup production webpack.
+	entry: {
+		["1-app"]: "./src/app.js",
+	},
+  output: {
+    path: `${__dirname}/dist/`,
+    filename: 'bundle.[hash].min.js'
+  },
+  devtool: 'source-map',
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'production',
+      template: 'template.html',
+			cache: true,
+			minify: {
+				removeComments: true,
+				collapseWhitespace: true
+			}
+    })
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader'
+        }
+      },
+			{
+				test: /\.scss$/,
+        use: [{
+          	loader: 'style-loader',
+        }, {
+            loader: 'css-loader',
+						options: {
+							modules: true,
+							localIdentName: '[path][name]__[local]--[hash:base64:5]'
+						}
+        }, {
+						loader: 'postcss-loader',
+						options: {
+							plugins:[
+								require('autoprefixer')
+							]
+						}
+					}, {
+          	loader: 'sass-loader'
+        }]
+			}
+    ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+    modules: ['node_modules']
+  }
 }
 
 switch (env) {
   case 'development':
-    console.log('⚙️⚙️⚙️ Run webpack development ⚙️⚙️⚙️'.green);
+    console.log('⚙️⚙️⚙️ Run webpack development ⚙️⚙️⚙️'.green, buildVersion());
     module.exports = develop;
     break;
   case 'production':
-    console.log('⚡⚡⚡ Run webpack production ⚡⚡⚡'.red);
+    console.log('⚡⚡⚡ Run webpack production ⚡⚡⚡'.red, buildVersion());
+		module.exports = production;
     break;
   default:
     console.log('❌❌❌ Default state is hit: Env variable is not defined somehow ❌❌❌.'.red);

@@ -5,15 +5,22 @@
  "author": "Marciano Schildmeijer",
  "license": "MIT",
  "scripts": {
-  "dev:server": "better-npm-run dev:server"
+  "dev:server": "better-npm-run dev:server",
+	"production": "better-npm-run production"
  },
  "betterScripts": {
   "dev:server": {
    "command": "webpack-dev-server --progress --inline --open",
    "env": {
-    "NODE_ENV": "development"
+     "NODE_ENV": "development"
    }
-  }
+ },
+ "production": {
+	"command": "webpack",
+	"env": {
+		"NODE_ENV": "production"
+	}
+ }
  },
  "dependencies": {
   "autoprefixer": "^7.1.6",
