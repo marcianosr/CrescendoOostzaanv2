@@ -13,12 +13,25 @@ class HomePageContainer extends Component {
 
 	render() {
 		const { loading, posts } = this.props;
-		console.log(this.props, 'props');
+		console.log(this.props.loading)
+
 		return (
 			<section>
 				<h2>HomePageContainer</h2>
-				{ loading && <div> loading... </div>}
-				{ !loading && <h1> {posts[0].title} </h1>}
+
+				{loading && <div> loading... </div>}
+
+				{!loading &&
+					posts.map((post) => {
+						return (
+							<div key={post.id}>
+								<h1>{post.title}</h1>
+								<p>{post.body}</p>
+							</div>
+						)
+
+					})
+				}
 			</section>
 		)
 	}
@@ -30,14 +43,12 @@ class HomePageContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-		posts: state.posts
+		posts: state.posts,
   };
 }
 
 const mapDispatchToProps = {
 	getPosts
 }
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePageContainer);
