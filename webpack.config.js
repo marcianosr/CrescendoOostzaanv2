@@ -105,10 +105,10 @@ const production = {
       title: 'production',
       template: 'template.html',
 			cache: true,
-			minify: {
-				removeComments: true,
-				collapseWhitespace: true
-			}
+			// minify: {
+			// 	removeComments: true,
+			// 	collapseWhitespace: true
+			// }
     })
   ],
   module: {
