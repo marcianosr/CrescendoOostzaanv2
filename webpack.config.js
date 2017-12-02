@@ -33,7 +33,7 @@ const develop = {
 		// ["0-vendor"]: ["preact", "preact-redux", "redux", "preact-router"]
 	},
   output: {
-    path: `${__dirname}/`,
+    path: `${__dirname}dist/`,
     filename: 'bundle.min.js'
   },
   devtool: 'eval-source-map',
@@ -96,7 +96,7 @@ const production = {
 		["1-app"]: "./src/app.js",
 	},
   output: {
-    path: `${__dirname}/dist/`,
+    path: `../${__dirname}/staging/`,
     filename: 'bundle.[hash].min.js'
   },
   devtool: 'source-map',
