@@ -33,7 +33,7 @@ const develop = {
 		// ["0-vendor"]: ["preact", "preact-redux", "redux", "preact-router"]
 	},
   output: {
-    path: `${__dirname}dist/`,
+    path: `${__dirname}/`,
     filename: 'bundle.min.js'
   },
   devtool: 'eval-source-map',
@@ -42,7 +42,7 @@ const develop = {
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: 'development',
-      template: 'template.html'
+      template: 'index.html'
     })
   ],
   module: {
@@ -103,7 +103,7 @@ const production = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'production',
-      template: 'template.html',
+      template: 'index.html',
 			cache: true,
 			// minify: {
 			// 	removeComments: true,
