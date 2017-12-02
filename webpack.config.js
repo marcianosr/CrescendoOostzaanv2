@@ -37,7 +37,7 @@ const develop = {
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: 'development',
-      template: 'template.html'
+      template: 'index.html'
     })
   ],
   module: {
@@ -87,7 +87,62 @@ const develop = {
 };
 
 const production = {
-	// Setup production webpack.
+	entry: {
+		["1-app"]: "./src/app.js",
+	},
+  output: {
+    path: `${__dirname}/dist/`,
+    filename: 'bundle.[hash].min.js'
+  },
+  devtool: 'source-map',
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'production',
+      template: 'index.html',
+			cache: true,
+			inject: 'body'
+			// minify: {
+			// 	removeComments: true,
+			// 	collapseWhitespace: true
+			// }
+    })
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader'
+        }
+      },
+			{
+				test: /\.scss$/,
+        use: [{
+          	loader: 'style-loader',
+        }, {
+            loader: 'css-loader',
+						options: {
+							modules: true,
+							localIdentName: '[path][name]__[local]--[hash:base64:5]'
+						}
+        }, {
+						loader: 'postcss-loader',
+						options: {
+							plugins:[
+								require('autoprefixer')
+							]
+						}
+					}, {
+          	loader: 'sass-loader'
+        }]
+			}
+    ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+    modules: ['node_modules']
+  }
 }
 
 switch (env) {
