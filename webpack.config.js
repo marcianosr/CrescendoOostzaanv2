@@ -96,7 +96,7 @@ const production = {
 		["1-app"]: "./src/app.js",
 	},
   output: {
-    path: `../${__dirname}/staging/`,
+    path: `${__dirname}/dist/`,
     filename: 'bundle.[hash].min.js'
   },
   devtool: 'source-map',
