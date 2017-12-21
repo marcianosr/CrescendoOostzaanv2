@@ -83,7 +83,7 @@ const develop = {
     contentBase: __dirname,
     compress: true,
     overlay: true,
-    port: 5000
+    port: 5001
   },
   resolve: {
     extensions: ['.js', '.jsx'],

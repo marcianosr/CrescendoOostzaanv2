@@ -1,13 +1,27 @@
-export function getPosts(posts) {
-  // Fake ajax request.
-	setTimeout(() => {
-
-	}, 3000);
-
+export function fetchPosts() {
 	return {
-		type: 'GET_POSTS',
-		payload: {
-			posts
-		}
+		type: 'FETCH_POSTS',
+    loading: true
 	}
+}
+
+
+export function successPosts(posts) {
+  return {
+    type: 'SUCCESS_POSTS',
+    payload: {
+      posts,
+    },
+    loading: false
+  }
+}
+
+export function errorPosts(error) {
+  return {
+    type: 'ERROR_POSTS',
+    payload: {
+      error,
+    },
+    loading: false
+  }
 }
