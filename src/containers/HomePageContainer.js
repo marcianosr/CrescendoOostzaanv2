@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PostsList from '../components/posts/List'
 import { fetchPosts } from '../actions/posts';
 
 
@@ -18,21 +19,7 @@ class HomePageContainer extends Component {
 		return (
 			<section>
 				<h2>HomePageContainer</h2>
-
-        {loading && <span>Loading...</span>}
-				{/* <h1> {this.props.posts && this.props.posts[0].id} </h1> */}
-				{!error && posts && posts.length &&
-					posts.map((post, i) => {
-						return (
-							<div key={i}>
-								<h1>{post.title}</h1>
-								<p>{post.body}</p>
-							</div>
-						)
-
-					})
-				}
-        {error && <p>Error: {error}</p>}
+        <PostsList posts={posts} loading={loading} error={error}/>
 			</section>
 		)
 	}

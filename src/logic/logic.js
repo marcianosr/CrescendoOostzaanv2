@@ -39,11 +39,14 @@ export const fetchPostsLogic = createLogic({
       dispatch(successPosts(posts))
 
     }).catch((error) => {
-      console.log(error);
+
       dispatch(errorPosts(error));
+
     }).then(() => {
-       done();
-    })
+
+      done();
+
+    });
 
   }
 })
