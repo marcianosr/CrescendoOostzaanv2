@@ -12,6 +12,7 @@ import logic from './logic/logic';
 
 
 import HomePageContainer from './containers/HomePageContainer';
+import PostContainer from './containers/PostContainer';
 
 console.log('Initialize app.');
 
@@ -42,7 +43,9 @@ const initializeRoot = () => (
 						<div>
 							<li><Link to="/">Home</Link></li>
 							<li><Link to="/over-crescendo">Over Crescendo</Link></li>
-							<Route exact path='/' component={HomePageContainer} />
+              <Route exact path='/' component={HomePageContainer} />
+							<Route exact path='/artikelen/:slug' component={PostContainer}
+                 />
 							<Route exact path='/over-crescendo' component={() => { return <h1>Over Crescendo</h1>}} />
 						</div>
 					</Router>

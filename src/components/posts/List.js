@@ -9,7 +9,7 @@ const PostsList = ({posts, loading, error}) => {
       {!error && posts && posts.length &&
         posts.map((post, i) => {
           return (
-            <a href='/' key={i}>
+            <a href='/artikelen/test' key={i}>
               <h1>{post.title}</h1>
               <p>{post.excerpt}</p>
             </a>

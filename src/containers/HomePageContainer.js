@@ -31,7 +31,7 @@ class HomePageContainer extends Component {
 	to the connected component */
 
 const mapStateToProps = state => {
-  console.log(state, 'state')
+  console.log(state, 'home')
   return {
     posts: state.posts.items,
     loading: state.posts.loading,

@@ -1,5 +1,8 @@
 import { createLogic, createLogicMiddleware } from 'redux-logic';
-import { successPosts, errorPosts } from '../actions/posts';
+import {
+  successPosts, successSinglePost,
+  errorPosts, errorSinglePost
+} from '../actions/posts';
 
 export const fetchPostsLogic = createLogic({
   type: 'FETCH_POSTS',
@@ -16,7 +19,7 @@ export const fetchPostsLogic = createLogic({
           resolve('Succes! Save posts to state!') :
           reject('Aww, fail!');
       }, 2000);
-    })
+    });
 
     posts.then((success) => {
       let posts = [
@@ -49,14 +52,59 @@ export const fetchPostsLogic = createLogic({
     });
 
   }
-})
+});
 
-createLogicMiddleware([
-  fetchPostsLogic,
-]);
+export const fetchSinglePostLogic = createLogic({
+  type: 'FETCH_SINGLE_POST',
+  cancelType: 'ERROR_SINGLE_POST',
+
+  process({ getState, action}, dispatch, done) {
+
+    let postFetched = true;
+
+    const singlePost = new Promise((resolve, reject) => {
+      setTimeout(() => {
+
+        postFetched ?
+          resolve('Succes! Save single post to state!') :
+          reject('Aww, fail!');
+      }, 2000);
+    })
+
+
+
+    singlePost.then((success) => {
+      
+      let singlePost = {
+          id: 1,
+          title: 'Hunter Exam arc',
+          excerpt: 'This anime series revolves around Gon and Killua going on an adventure looking for Gon his dad!',
+          body: 'The journey begins with Gon taking a series of bizarre tests to become a Hunter, which includes navigating a deadly jungle, hunting other applicants, killing a wild boar, an extraordinarily long underground marathon, and making sushi. During the Hunter Exam, Gon meets and befriends three of the applicants, Kurapika, Killua, and Leorio. The series\' first antagonist is also introduced as one of the applicants. Hisoka is a complex villain who uses playing cards as weapons and views Gon as an "unripe fruit" that he will take great pleasure in killing once he\'s grown up enough to present a challenge. Before the end of the Hunter Exam, Killua faces his brother, Illumi, who makes him come home before he can even finish the Exam.',
+          date: '22 oktember 2200',
+        }
+
+      dispatch(successSinglePost(singlePost))
+
+    }).catch((error) => {
+
+      dispatch(errorSinglePost(error));
+
+    }).then(() => {
+
+      done();
+
+    });
+
+  }
+});
 
 const middlewares = [
-  fetchPostsLogic
-]
+  fetchPostsLogic,
+  fetchSinglePostLogic
+];
+
+createLogicMiddleware(middlewares);
+
+
 
 export default middlewares;
