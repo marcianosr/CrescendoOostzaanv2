@@ -5,17 +5,20 @@ import { fetchSinglePost } from '../actions/posts';
 
 
 
-class PostContainer extends Component {
+class SinglePostContainer extends Component {
 	constructor(props) {
 		super(props);
+
 	}
 
 	componentDidMount() {
-    this.props.fetchSinglePost();
+    this.props.fetchSinglePost(this.props.match.params.slug);
 	}
 
 	render() {
+    console.log('loading', this.props)
 		return (
+
       <SinglePost {...this.props.singlePost} />
 		)
 	}
@@ -35,4 +38,4 @@ const mapDispatchToProps = {
   fetchSinglePost
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(SinglePostContainer);

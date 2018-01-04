@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-
-const PostsList = ({posts, loading, error}) => {
-  console.log(posts, 'bls')
+const PostsList = ({ posts }) => {
   return (
     <div>
-      {loading && <span>Loading...</span>}
-      {!error && posts && posts.length &&
+      {
         posts.map((post, i) => {
           return (
-            <a href='/artikelen/test' key={i}>
+            <Link to={`/artikelen/${post.slug}`} key={i}>
               <h1>{post.title}</h1>
               <p>{post.excerpt}</p>
-            </a>
+            </Link>
           )
-
         })
       }
-      {error && <p>Helaas kunnen de berichten niet worden geladen.</p>}
     </div>
   )
 }

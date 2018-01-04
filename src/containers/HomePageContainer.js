@@ -3,10 +3,13 @@ import { connect } from 'react-redux';
 import PostsList from '../components/posts/List'
 import { fetchPosts } from '../actions/posts';
 
+import styles from './Title.scss';
+
 
 class HomePageContainer extends Component {
 	constructor(props) {
 		super(props);
+    console.log(styles, 'styles')
 	}
 
 	componentDidMount() {
@@ -18,8 +21,13 @@ class HomePageContainer extends Component {
 
 		return (
 			<section>
-				<h2>HomePageContainer</h2>
-        <PostsList posts={posts} loading={loading} error={error}/>
+				<h2 class={styles.title}>HomePageContainer</h2>
+        {/*  Setup loading and errors hee*/}
+
+        {loading && <span>Loading...</span>}
+        {!error && posts && posts.length && <PostsList posts={posts} loading={loading} error={error}/>}
+        {error && <p>Helaas kunnen de berichten niet worden geladen.</p>}
+        
 			</section>
 		)
 	}
