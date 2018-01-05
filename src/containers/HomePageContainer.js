@@ -9,7 +9,6 @@ import styles from './Title.scss';
 class HomePageContainer extends Component {
 	constructor(props) {
 		super(props);
-    console.log(styles, 'styles')
 	}
 
 	componentDidMount() {
@@ -18,16 +17,14 @@ class HomePageContainer extends Component {
 
 	render() {
 		const { posts, loading, error } = this.props;
-
 		return (
 			<section>
-				<h2 class={styles.title}>HomePageContainer</h2>
-        {/*  Setup loading and errors hee*/}
+				<h2 className={styles.title}>HomePageContainer</h2>
 
         {loading && <span>Loading...</span>}
-        {!error && posts && posts.length && <PostsList posts={posts} loading={loading} error={error}/>}
+        {!error && posts && posts.length && <PostsList posts={posts} />}
         {error && <p>Helaas kunnen de berichten niet worden geladen.</p>}
-        
+
 			</section>
 		)
 	}
@@ -39,7 +36,6 @@ class HomePageContainer extends Component {
 	to the connected component */
 
 const mapStateToProps = state => {
-  console.log(state, 'home')
   return {
     posts: state.posts.items,
     loading: state.posts.loading,

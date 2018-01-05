@@ -8,7 +8,6 @@ import { fetchSinglePost } from '../actions/posts';
 class SinglePostContainer extends Component {
 	constructor(props) {
 		super(props);
-
 	}
 
 	componentDidMount() {
@@ -16,17 +15,20 @@ class SinglePostContainer extends Component {
 	}
 
 	render() {
-    console.log('loading', this.props)
-		return (
+    const { singlePost, loading, error } = this.props;
 
-      <SinglePost {...this.props.singlePost} />
+		return (
+      <div>
+        {loading && <span>Loading...</span>}
+        {!error && <SinglePost {...this.props.singlePost} />}
+        {error && <p>Helaas kan het bericht niet worden geladen.</p>}
+      </div>
 		)
 	}
 }
 
 
 const mapStateToProps = state => {
-  console.log(state, 'state')
   return {
     singlePost: state.singlePost.item,
     loading: state.singlePost.loading,

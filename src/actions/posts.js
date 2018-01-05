@@ -30,7 +30,6 @@ export function errorPosts(error) {
 /* Single Post Actions */
 
 export function fetchSinglePost(slug) {
-  console.log('slug', slug)
 	return {
 		type: 'FETCH_SINGLE_POST',
     loading: true,

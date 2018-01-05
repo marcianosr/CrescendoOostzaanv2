@@ -14,8 +14,7 @@ export const posts = (state = initialState.posts, action) => {
         return { loading: true }
         break;
       case 'SUCCESS_POSTS':
-        console.log('succes_POSTS')
-        return { items: action.payload.posts, loading: false }
+        return { items: action.payload.posts.data, loading: false }
         break;
       case 'ERROR_POSTS':
         return { error: action.payload.error, loading: false }
@@ -34,7 +33,7 @@ export const singlePost = (state = initialState.singlePost, action) => {
         return { loading: true }
         break;
       case 'SUCCESS_SINGLE_POST':
-        return { item: action.payload.singlePost, loading: false }
+        return { item: action.payload.singlePost.data[0], loading: false }
         break;
       case 'ERROR_SINGLE_POST':
         return { error: action.payload.error, loading: false }

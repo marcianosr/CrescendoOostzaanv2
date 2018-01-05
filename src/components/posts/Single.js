@@ -1,12 +1,12 @@
 import React from 'react';
 
-const SinglePosts = ({ title, body }) => {
-  return(
+const SinglePost = ({ title, content }) => {
+  return (
     <div>
-      <h1>{title}</h1>
-      <p>{body}</p>
+      {title && <h1> {title.rendered} </h1>}
+      {content && <p> {content.rendered} </p>}
     </div>
   )
 }
 
-export default SinglePosts;
+export default SinglePost;
