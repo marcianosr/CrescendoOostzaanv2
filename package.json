@@ -6,7 +6,8 @@
  "license": "MIT",
  "scripts": {
   "dev:server": "better-npm-run dev:server",
-  "production": "better-npm-run production"
+  "production": "better-npm-run production",
+  "deploy": "better-npm-run deploy"
  },
  "betterScripts": {
   "dev:server": {
@@ -20,6 +21,9 @@
    "env": {
     "NODE_ENV": "production"
    }
+  },
+  "deploy": {
+    "command": "node ftp-deploy"
   }
  },
  "dependencies": {

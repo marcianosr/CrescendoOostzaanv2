@@ -3,3 +3,4 @@ old/
 cms/
 dist
 .DS_Store
+ftp-deploy.js

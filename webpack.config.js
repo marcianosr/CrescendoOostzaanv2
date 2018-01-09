@@ -168,4 +168,6 @@ switch (env) {
 /* to do
 [ ] - Browserlist
 [ ] - Uglify
-[ ] -
+[ ] - Clean dist
+
+*/
