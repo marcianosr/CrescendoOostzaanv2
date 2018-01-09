@@ -1,10 +1,12 @@
 import React from 'react';
 
-const SinglePost = ({ title, content }) => {
+const SinglePost = ({ title, acf }) => {
+
   return (
     <div>
       {title && <h1> {title.rendered} </h1>}
-      {content && <p> {content.rendered} </p>}
+      {/* {content && <div dangerouslySetInnerHTML={{__html: content.rendered}}></div>} */}
+      {acf && <div dangerouslySetInnerHTML={{__html: acf.message}}></div>}
     </div>
   )
 }

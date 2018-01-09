@@ -34,7 +34,7 @@ const develop = {
 	},
   output: {
     path: `${__dirname}dist/`,
-    filename: 'bundle.min.js'
+    filename: 'bundle.min.js',
   },
   devtool: 'eval-source-map',
   plugins: [
@@ -97,7 +97,10 @@ const production = {
 	},
   output: {
     path: `${__dirname}/dist/`,
-    filename: 'bundle.[hash].min.js'
+    filename: 'bundle.[hash].min.js',
+    // publicPath: `/staging/dist/`
+    publicPath: `./`
+
   },
   devtool: 'source-map',
   plugins: [
@@ -155,9 +158,14 @@ switch (env) {
     module.exports = develop;
     break;
   case 'production':
-    console.log('⚡⚡⚡ Run webpack production ⚡⚡⚡'.red, buildVersion());
+    console.log('⚡⚡⚡ Run webpack production ⚡⚡⚡'.yellow, buildVersion());
 		module.exports = production;
     break;
   default:
     console.log('❌❌❌ Default state is hit: Env variable is not defined somehow ❌❌❌.'.red);
 }
+
+/* to do
+[ ] - Browserlist
+[ ] - Uglify
+[ ] -
