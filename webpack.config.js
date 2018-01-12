@@ -62,7 +62,8 @@ const develop = {
             loader: 'css-loader',
 						options: {
 							modules: true,
-							localIdentName: '[path][name]__[local]--[hash:base64:5]'
+							localIdentName: '[path][name]__[local]--[hash:base64:5]',
+              camelCase: true
 						}
         }, {
 						loader: 'postcss-loader',
@@ -87,7 +88,10 @@ const develop = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
-    modules: ['node_modules']
+    modules: ['node_modules'],
+    alias: {
+      'slick': `${__dirname}/node_modules/slick-carousel/slick/slick-theme.css`
+    }
   }
 };
 

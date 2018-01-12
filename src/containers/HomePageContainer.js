@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PostsList from '../components/posts/List'
+
+import Slider from '../components/slider/slider';
+
 import { fetchPosts } from '../actions/posts';
+import PostsList from '../components/posts/List'
 
 import styles from './Title.scss';
 
@@ -17,12 +20,20 @@ class HomePageContainer extends Component {
 
 	render() {
 		const { posts, loading, error } = this.props;
+
 		return (
 			<section>
-				<h2 className={styles.title}>HomePageContainer</h2>
+        <Slider />
+
+				{/* <h2 className={styles.title}>HomePageContainer</h2> */}
 
         {loading && <span>Loading...</span>}
-        {!error && posts && posts.length && <PostsList posts={posts} />}
+        {!error && posts && posts.length &&
+          <div>
+
+            <PostsList posts={posts} />
+          </div>
+        }
         {error && <p>Helaas kunnen de berichten niet worden geladen.</p>}
 
 			</section>

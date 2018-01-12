@@ -1,9 +1,11 @@
 @import 'generic/box-sizing.scss';
 
+// @import 'settings/reset.scss';
 @import 'settings/theme.scss';
 @import 'settings/typography.scss';
+@import 'settings/general.scss';
 
 
 body {
-	background: $gradient-fountain-green;
+	background: #ededed;
 }

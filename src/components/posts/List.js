@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Block from '../block/Block';
 
 const PostsList = ({ posts }) => {
 
   console.log(posts)
   return (
-    <div>
+    <Block>
+      <h2>Laatste nieuws</h2>
       {
         posts.map((post, i) => {
           return (
@@ -17,7 +19,7 @@ const PostsList = ({ posts }) => {
           )
         })
       }
-    </div>
+    </Block>
   )
 }
 

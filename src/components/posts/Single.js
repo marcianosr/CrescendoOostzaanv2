@@ -1,7 +1,6 @@
 import React from 'react';
 
 const SinglePost = ({ title, acf }) => {
-
   return (
     <div>
       {title && <h1> {title.rendered} </h1>}
