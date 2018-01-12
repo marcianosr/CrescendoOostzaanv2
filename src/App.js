@@ -1,7 +1,8 @@
 import './styles/app.scss';
+
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -14,7 +15,7 @@ import logic from './logic/logic';
 import HomePageContainer from './containers/HomePageContainer';
 import SinglePostContainer from './containers/SinglePostContainer';
 
-console.log('Initialize app.');
+import Navigation from './components/navigation/Navigation'
 
 const rootElement = document.querySelector('#root');
 
@@ -30,6 +31,8 @@ const store = createStore(
   )
 );
 
+console.log('Initialize app.');
+
 const initializeRoot = () => (
 	render(
 			// Setup Redux provider.
@@ -38,11 +41,11 @@ const initializeRoot = () => (
 			// Create containers.
 			<Provider store={store}>
 				<main>
-					<h1>Crescendo Oostzaan</h1>
+					{/* <h1>Crescendo Oostzaan</h1> */}
 					<Router>
 						<div>
-							<li><Link to="/">Home</Link></li>
-							<li><Link to="/over-crescendo">Over Crescendo</Link></li>
+							<Navigation type='transparent' />
+
               <Route exact path='/' component={HomePageContainer} />
 							<Route exact path='/artikelen/:slug' component={SinglePostContainer}
                  />
