@@ -1,11 +1,11 @@
 const webpack = require('webpack');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const colors = require('colors');
 
 const env = process.env.NODE_ENV;
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 
 const buildVersion = function() {
   return require("./package.json").version;
@@ -90,8 +90,9 @@ const develop = {
     extensions: ['.js', '.jsx'],
     modules: ['node_modules'],
     alias: {
-      'slick': `${__dirname}/node_modules/slick-carousel/slick/slick-theme.css`
+      src: path.resolve(__dirname, "src/"),
     }
+
   }
 };
 

@@ -1,22 +1,26 @@
 import React from 'react';
-import Slick from 'react-slick';
 import Carousel from 'nuka-carousel';
+
+import styles from './Slider.scss';
+
 
 
 const Slider = () => {
 
   return (
-    <Carousel autoplay>
-      <div>
-        <img width='100%' src='http://placehold.it/1200x500/ff0000' />
-      </div>
-      <div>
-        <img width='100%' src='http://placehold.it/900x300/ff00ff' />
-      </div>
-      <div>
-        <img width='100%' src='http://placehold.it/900x300/ffff00' />
-      </div>
-    </Carousel>
+    <section className={styles.sliderContainer}>
+      <Carousel autoplay class={styles.slider}>
+        <div>
+          <img style={{ backgroundImage: 'url(http://placehold.it/1200x500/ff0000)' }} />
+        </div>
+        <div>
+          <img style={{ backgroundImage: 'url(http://placehold.it/800x300/0000ff)' }} />
+        </div>
+        <div>
+          <img style={{ backgroundImage: 'url(http://placehold.it/900x700/00ff00)' }} />
+        </div>
+      </Carousel>
+    </section>
   )
 }
 

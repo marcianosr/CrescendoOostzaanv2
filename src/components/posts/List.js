@@ -1,25 +1,33 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Block from '../block/Block';
+import Title from 'src/components/title/Title';
+
+import styles from 'src/components/posts/List.scss';
 
 const PostsList = ({ posts }) => {
 
-  console.log(posts)
+  console.log(styles)
   return (
-    <Block>
-      <h2>Laatste nieuws</h2>
-      {
-        posts.map((post, i) => {
-          return (
-            <Link to={`/artikelen/${post.slug}`} key={post.id}>
-              <h1>{post.title.rendered}</h1>
-              <p>{post.acf.excerpt}</p>
-              <img src={post.acf.slider[0].image.sizes.medium} />
-            </Link>
-          )
-        })
-      }
-    </Block>
+    <div>
+      <Title>Laatste nieuws</Title>
+
+      <div className={styles.postItemContainer}>
+        {
+          posts.map((post, i) => {
+            return (
+              <Link className={styles.postItem} to={`/artikelen/${post.slug}`} key={post.id}>
+                <img src={post.acf.slider[0].image.sizes.medium} />
+
+                <div className={styles.textContainer}>
+                  <Title type='h2'>{post.title.rendered}</Title>
+                  <p>{post.acf.excerpt}</p>
+                </div>
+              </Link>
+            )
+          })
+        }
+      </div>
+    </div>
   )
 }
 

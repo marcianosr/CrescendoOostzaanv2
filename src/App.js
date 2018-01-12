@@ -6,16 +6,16 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
-import { rootReducer } from './reducers/rootReducer';
+import { rootReducer } from 'src/reducers/rootReducer';
 
 import { createLogicMiddleware } from 'redux-logic';
-import logic from './logic/logic';
+import logic from 'src/logic/logic';
 
 
-import HomePageContainer from './containers/HomePageContainer';
-import SinglePostContainer from './containers/SinglePostContainer';
+import HomePageContainer from 'src/containers/HomePageContainer';
+import SinglePostContainer from 'src/containers/SinglePostContainer';
 
-import Navigation from './components/navigation/Navigation'
+import Navigation from 'src/components/navigation/Navigation'
 
 const rootElement = document.querySelector('#root');
 

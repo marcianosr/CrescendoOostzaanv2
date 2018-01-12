@@ -37,10 +37,13 @@
   }
 
   .open {
+    visibility: visible;
     opacity: 1;
   }
 
   .closed {
+    visibility: hidden;
     opacity: 0;
+    height: 0;
   }
 }

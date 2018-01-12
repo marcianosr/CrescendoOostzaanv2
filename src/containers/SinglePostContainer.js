@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import SinglePost from '../components/posts/Single';
-import { fetchSinglePost } from '../actions/posts';
+import SinglePost from 'src/components/posts/Single';
+import { fetchSinglePost } from 'src/actions/posts';
 
 
 
