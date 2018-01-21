@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styles from './Block.scss';
 
 const Block = ({ children, color }) => {
-  console.log(color)
   const classNames = [
     styles.crescBlock,
     color && color === 'white' ? styles.white : null

@@ -1,2 +1,19 @@
 $cresc-responsive-max-width: 60rem;
 $cresc-responsive-breakpoint: 40rem;
+
+
+:global {
+  button, a {
+    cursor: pointer;
+    font-family: 'Montserrat';
+    font-size: 1em;
+    border: 0;
+    text-decoration: none;
+  }
+
+  p {
+    font-size: .9em;
+    line-height: 1.75em;
+    padding: 1em 0;
+  }
+}

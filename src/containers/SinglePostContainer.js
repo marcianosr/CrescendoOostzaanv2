@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import SinglePost from 'src/components/posts/Single';
 import { fetchSinglePost } from 'src/actions/posts';
 
+import Button from 'src/components/button/Button';
+import Navigation from 'src/components/navigation/Navigation';
 
 
 class SinglePostContainer extends Component {
@@ -19,6 +21,7 @@ class SinglePostContainer extends Component {
 
 		return (
       <div>
+        <Navigation type='transparent' />
         {loading && <span>Loading...</span>}
         {!error && <SinglePost {...this.props.singlePost} />}
         {error && <p>Helaas kan het bericht niet worden geladen.</p>}

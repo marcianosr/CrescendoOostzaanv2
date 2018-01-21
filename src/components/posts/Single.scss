@@ -1,0 +1,21 @@
+@import '../../styles/settings/theme.scss';
+
+.imageContainer {
+  width: 20em;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.back {
+  display: block;
+  margin-bottom: 1.5em;
+  font-size: .75em;
+  color: $brand-fountain-green;
+
+  &:hover {
+    color: $brand-fountain-green-light;
+  }
+}

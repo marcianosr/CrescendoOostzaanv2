@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Slider from 'src/components/slider/slider';
-
 import { fetchPosts } from 'src/actions/posts';
 
+import SideBlockContainer from 'src/containers/SideBlockContainer';
+
+import Slider from 'src/components/slider/slider';
 import Block from 'src/components/block/Block';
 import Title from 'src/components/title/Title';
 import Button from 'src/components/button/Button';
 import PostsList from 'src/components/posts/List'
+import Navigation from 'src/components/navigation/Navigation';
 
 
 class HomePageContainer extends Component {
-	constructor(props) {
-		super(props);
-	}
-
 	componentDidMount() {
     this.props.fetchPosts();
 	}
@@ -25,6 +23,7 @@ class HomePageContainer extends Component {
 
 		return (
 			<section>
+        <Navigation type='transparent' />
         <Slider />
 
 				{/* <h2 className={styles.title}>HomePageContainer</h2> */}
@@ -33,7 +32,6 @@ class HomePageContainer extends Component {
           {loading && <span>Loading...</span>}
           {!error && posts && posts.length &&
             <div>
-
               <PostsList posts={posts} />
             </div>
           }
@@ -43,8 +41,15 @@ class HomePageContainer extends Component {
         <Block color='white'>
           <Title>Over Crescendo</Title>
           <p>In het pittoreske Oostzaan vindt u de Christelijke Muziekvereniging Crescendo. Dit fanfareorkest, opgericht op 1 november 1912, bestaat uit ruim veertig leden.De muzikanten van Crescendo vertegenwoordigen vele koperblaasinstrumenten. Onder leiding van dirigent Bart Koning treedt het orkest een aantal keer per jaar op bij diverse gelegenheden.</p>
-          <Button normal>Over Crescendo</Button>
+          <Button 
+              wide
+              normal
+              uppercase
+              centered
+              href='/over-crescendo'>Over Crescendo</Button>
+          <SideBlockContainer type='agenda'/>
         </Block>
+
 
 			</section>
 		)

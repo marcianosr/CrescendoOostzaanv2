@@ -1,6 +1,14 @@
+@import '../../styles/settings/general.scss';
+
 .cresc-block {
-  padding: 1.25em;
-  padding-top: 5em;
+  padding: 1.5em;
+  padding-top: 2.5em;
+  padding-bottom: 2.5em;
+
+  @media (min-width: $cresc-responsive-breakpoint) {
+    padding-top: 5em;
+  }
+
 
   &.white {
     background-color: white;

@@ -1,0 +1,52 @@
+@import '../../styles/settings/general.scss';
+@import '../../styles/settings/theme.scss';
+
+
+.sideblock {
+  background: $brand-fountain-green;
+
+  strong {
+    font-weight: 800;
+    display: block;
+    width: 100%;
+    padding-bottom: .5em;
+  }
+
+  li {
+    color: white;
+    font-size: .8em;
+  }
+
+}
+
+.agendaBlock {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  transition: bottom .6s;
+
+  &.open {
+    bottom: -100px;
+  }
+
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1.25em;
+  }
+
+  a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: .75em;
+    text-align: center;
+
+    &:hover {
+      background-color: $brand-fountain-green-dark;
+    }
+  }
+}

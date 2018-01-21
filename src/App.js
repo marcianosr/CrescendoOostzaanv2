@@ -13,9 +13,10 @@ import logic from 'src/logic/logic';
 
 
 import HomePageContainer from 'src/containers/HomePageContainer';
+import About from 'src/pages/about/About';
 import SinglePostContainer from 'src/containers/SinglePostContainer';
 
-import Navigation from 'src/components/navigation/Navigation'
+import Footer from 'src/components/footer/Footer';
 
 const rootElement = document.querySelector('#root');
 
@@ -44,12 +45,14 @@ const initializeRoot = () => (
 					{/* <h1>Crescendo Oostzaan</h1> */}
 					<Router>
 						<div>
-							<Navigation type='transparent' />
 
               <Route exact path='/' component={HomePageContainer} />
 							<Route exact path='/artikelen/:slug' component={SinglePostContainer}
                  />
-							<Route exact path='/over-crescendo' component={() => { return <h1>Over Crescendo</h1>}} />
+							<Route exact path='/over-crescendo' component={About} />
+
+              <Footer>Volg ons op facebook</Footer>
+
 						</div>
 					</Router>
 				</main>

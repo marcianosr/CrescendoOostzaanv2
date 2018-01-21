@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Button from 'src/components/button/Button';
 
 import styles from './Navigation.scss';
-
 
 class Navigation extends Component {
   constructor() {
     super();
     this.state = {
-      isOpen: true
+      isOpen: false
     }
   }
 
@@ -19,6 +19,7 @@ class Navigation extends Component {
   openNavigation = () => {
     this.setState({ isOpen: true })
   }
+
 
   render() {
     const { type } = this.props;
@@ -34,15 +35,14 @@ class Navigation extends Component {
     .filter(Boolean)
     .join(' ');
 
-
     return (
       <nav className={classNames}>
         { !isOpen && <button className={styles.openButton} onClick={this.openNavigation}>open</button>}
         { isOpen && <button className={styles.closeButton} onClick={this.closeNavigation}>close</button>}
 
         <ul className={isOpenClass}>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/over-crescendo">Over Crescendo</Link></li>
+          <li><Button href='/'>Home</Button></li>
+          <li><Button href="/over-crescendo">Over Crescendo</Button></li>
         </ul>
       </nav>
     )

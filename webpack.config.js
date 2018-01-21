@@ -92,7 +92,6 @@ const develop = {
     alias: {
       src: path.resolve(__dirname, "src/"),
     }
-
   }
 };
 
@@ -153,7 +152,10 @@ const production = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
-    modules: ['node_modules']
+    modules: ['node_modules'],
+    alias: {
+      src: path.resolve(__dirname, "src/"),
+    }
   }
 }
 
